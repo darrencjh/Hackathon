@@ -1,0 +1,50 @@
+  unsigned long currentMillis = millis;
+  //string currentMillis = millis;
+  unsigned long timeDifference;
+  unsigned long prev = 0;
+  //unsigned long prev = currentMillis;
+  int prevstate = 0;
+
+void setup() {
+  Serial.begin(9600);
+  pinMode(6, INPUT);
+}
+
+
+
+void loop() {
+
+
+  if (digitalRead(6) == HIGH) { 
+    if (prevstate == 0) {
+          Serial.print("Active   ");
+          Serial.print(currentMillis / 1000);
+          prevstate = 1;
+    }
+
+  
+
+  }
+
+  else
+  {
+    //digitalRead(6) == LOW
+      if (prevstate == 1) {
+        Serial.print("Inactive");
+        Serial.print(currentMillis / 1000);
+        prevstate = 0;
+      }
+
+  }
+
+//  if (timeDifference > 300000) {
+//    Serial.println("You have been inactive for too long. Please walk around.");
+
+  
+
+
+
+  delay(1000);
+}
+
+
